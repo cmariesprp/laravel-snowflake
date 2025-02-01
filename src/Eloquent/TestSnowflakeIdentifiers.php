@@ -9,16 +9,19 @@ class TestSnowflakeIdentifiers
     public const START_ID = 9000000000000000000;
 
     /**
-     * @var array<class-string<Model>, int> List of models and their current incrementing ID counters
+     * @var array<class-string<Model>,int> List of models and their current incrementing ID counters
      */
     protected array $models = [];
 
     /**
      * Resolve the singleton instance
      */
-    public static function make(): static
+    public static function make(): self
     {
-        return app(static::class);
+        /** @var self $instance */
+        $instance = app(self::class);
+
+        return $instance;
     }
 
     /**
@@ -37,9 +40,10 @@ class TestSnowflakeIdentifiers
      */
     public function getNextId(string $model): string
     {
-        $this->models[$model] ??= static::START_ID;
-        $this->models[$model]++;
+        $count = $this->models[$model] ??= self::START_ID;
+        $count++;
+        $this->models[$model] = $count;
 
-        return (string) $this->models[$model];
+        return (string) $count;
     }
 }
