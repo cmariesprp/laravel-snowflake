@@ -4,13 +4,13 @@ namespace BradieTilley\Snowflakes\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @property array<class-string<Model>, int> $models List of models and their current incrementing ID counters
- */
 class TestSnowflakeIdentifiers
 {
     public const START_ID = 9000000000000000000;
 
+    /**
+     * @var array<class-string<Model>, int> List of models and their current incrementing ID counters
+     */
     protected array $models = [];
 
     /**
@@ -32,6 +32,8 @@ class TestSnowflakeIdentifiers
 
     /**
      * Get the next incremental ID
+     *
+     * @param class-string<Model> $model
      */
     public function getNextId(string $model): string
     {

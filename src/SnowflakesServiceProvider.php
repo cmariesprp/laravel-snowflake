@@ -19,7 +19,9 @@ class SnowflakesServiceProvider extends PackageServiceProvider
     {
         $this->app->singleton(TestSnowflakeIdentifiers::class, TestSnowflakeIdentifiers::class);
 
+        /** @var array{ epoch: string, cluster: int, worker: int } $config */
         $config = config('snowflakes.constants', []);
+
         Snowflake::configure($config['epoch'], $config['cluster'], $config['worker']);
     }
 }
