@@ -27,7 +27,7 @@
         "php": "^8.4",
         "laravel/framework": "^11.40",
         "spatie/laravel-package-tools": "^1.16",
-        "bradietilley/php-snowflake": "^1.0"
+        "bradietilley/php-snowflake": "^1.0.1"
     },
     "require-dev": {
         "laravel/pint": "^1.19",
