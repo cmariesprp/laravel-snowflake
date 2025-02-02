@@ -62,7 +62,7 @@ The package includes a `LaravelSequenceResolver` for PHP Snowflake, which utiliz
 You can configure various cache-related options, such as:
 
 - The cache store (`snowflakes.sequencing.store`)
-- Cache prefix (`snowflakes.sequencing.store`)
+- Cache prefix (`snowflakes.sequencing.prefix`)
 - Cache lock expiry (`snowflakes.sequencing.expiry`)
 - Cache lock wait time (`snowflakes.sequencing.wait`)
 
