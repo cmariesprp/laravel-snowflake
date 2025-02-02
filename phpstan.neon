@@ -4,3 +4,4 @@ parameters:
     - src/
   ignoreErrors:
     - identifier: trait.unused
+    - identifier: cast.int

@@ -16,6 +16,8 @@ class LaravelCacheResolver implements SequenceResolver
 
     protected Lock $lock;
 
+    protected int $wait;
+
     public function __construct(CacheManager $cache)
     {
         /** @var ?string $store */
@@ -26,14 +28,20 @@ class LaravelCacheResolver implements SequenceResolver
         $prefix = config('snowflakes.sequencing.prefix', '');
         $this->prefix = $prefix;
 
-        $this->lock = Cache::lock("{$prefix}_lock", 10);
+        /** @var int $expire */
+        $expire = (int) config('snowflakes.sequencing.lock_expiry', 5);
+        $this->lock = Cache::lock("{$prefix}_lock", $expire);
+
+        /** @var int $wait */
+        $wait = (int) config('snowflakes.sequencing.lock_wait', 6);
+        $this->wait = $wait;
     }
 
     public function sequence(int $currentTime): int
     {
         $key = $this->prefix.$currentTime;
 
-        return $this->lock->block(10, function () use ($key) {
+        return (int) $this->lock->block($this->wait, function () use ($key) {
             if ($this->cache->add($key, 1, 10)) {
                 return 0;
             }
