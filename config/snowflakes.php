@@ -1,5 +1,7 @@
 <?php
 
+use BradieTilley\Snowflakes\SequenceResolvers\LaravelCacheResolver;
+
 return [
     /**
      * Use incremental IDs starting from 9000000000000000000 for predictability
@@ -9,6 +11,25 @@ return [
      * Useful for unit testing when wanting predictable, sequential IDs.
      */
     'testing' => env('SNOWFLAKE_TESTING', false),
+
+    'sequencing' => [
+        /**
+         * Choose the resolver to use for handling concurrency
+         */
+        'resolver' => LaravelCacheResolver::class,
+
+        /**
+         * The LaravelCacheResolver uses Laravel caching to ensure concurrency.
+         *
+         * This store should be a store that supports Cache Locks.
+         */
+        'store' => env('SNOWFLAKE_CACHE_STORE', null),
+
+        /**
+         * Cache key prefix to ensure keys don't clash with other keys
+         */
+        'prefix' => env('SNOWFLAKE_CACHE_PREFIX', ''),
+    ],
 
     /**
      * A set of constants that should realistically never change, or when they are

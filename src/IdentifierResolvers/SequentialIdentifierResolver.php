@@ -1,15 +1,15 @@
 <?php
 
-namespace BradieTilley\Snowflakes\Eloquent;
+namespace BradieTilley\Snowflakes\IdentifierResolvers;
 
-use Illuminate\Database\Eloquent\Model;
+use BradieTilley\Snowflake\IdentifierResolvers\IdentifierResolver;
 
-class TestSnowflakeIdentifiers
+class SequentialIdentifierResolver implements IdentifierResolver
 {
     public const START_ID = 9000000000000000000;
 
     /**
-     * @var array<class-string<Model>,int> List of models and their current incrementing ID counters
+     * @var array<string, int> List of models and their current incrementing ID counters
      */
     protected array $models = [];
 
@@ -33,17 +33,12 @@ class TestSnowflakeIdentifiers
         $this->models = [];
     }
 
-    /**
-     * Get the next incremental ID
-     *
-     * @param class-string<Model> $model
-     */
-    public function getNextId(string $model): string
+    public function identifier(int $time, int $sequence, ?string $group = null): int
     {
-        $count = $this->models[$model] ??= self::START_ID;
+        $count = $this->models[$group] ??= self::START_ID;
         $count++;
-        $this->models[$model] = $count;
+        $this->models[$group] = $count;
 
-        return (string) $count;
+        return $count;
     }
 }

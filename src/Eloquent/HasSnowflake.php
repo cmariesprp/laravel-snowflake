@@ -3,6 +3,7 @@
 namespace BradieTilley\Snowflakes\Eloquent;
 
 use BradieTilley\Snowflake\Snowflake;
+use BradieTilley\Snowflakes\SnowflakeGenerator;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -35,10 +36,6 @@ trait HasSnowflake
 
     public static function getNextSnowflakeId(): string
     {
-        if (config('snowflakes.testing')) {
-            return TestSnowflakeIdentifiers::make()->getNextId(static::class);
-        }
-
-        return Snowflake::id();
+        return SnowflakeGenerator::make()->id(static::class);
     }
 }
