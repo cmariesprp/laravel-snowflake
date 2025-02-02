@@ -5,7 +5,7 @@ A Laravel wrapper of [PHP Snowflake](https://github.com/bradietilley/php-snowfla
 ![Static Analysis](https://github.com/bradietilley/laravel-snowflake/actions/workflows/static.yml/badge.svg)
 ![Tests](https://github.com/bradietilley/laravel-snowflake/actions/workflows/tests.yml/badge.svg)
 ![Laravel Version](https://img.shields.io/badge/Laravel%20Version-11.x-F9322C)
-![PHP Version](https://img.shields.io/badge/PHP%20Version-8.3-4F5B93)
+![PHP Version](https://img.shields.io/badge/PHP%20Version-%E2%89%A58.4-4F5B93)
 
 ## Introduction
 
