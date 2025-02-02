@@ -8,7 +8,7 @@ use Illuminate\Contracts\Cache\Lock;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
 
-class LaravelCacheResolver implements SequenceResolver
+class LaravelSequenceResolver implements SequenceResolver
 {
     protected string $prefix;
 

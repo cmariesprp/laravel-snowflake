@@ -57,7 +57,7 @@ $model->id; // 9348975348573485734
 
 ### Concurrency
 
-The package includes a `LaravelCacheResolver` for PHP Snowflake, which utilizes a cache repository to manage the generation of multiple concurrent IDs within the same microsecond.
+The package includes a `LaravelSequenceResolver` for PHP Snowflake, which utilizes a cache repository to manage the generation of multiple concurrent IDs within the same microsecond.
 
 You can configure various cache-related options, such as:
 

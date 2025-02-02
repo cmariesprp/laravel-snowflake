@@ -1,6 +1,6 @@
 <?php
 
-use BradieTilley\Snowflakes\SequenceResolvers\LaravelCacheResolver;
+use BradieTilley\Snowflakes\SequenceResolvers\LaravelSequenceResolver;
 
 return [
     /**
@@ -16,7 +16,7 @@ return [
         /**
          * Choose the resolver to use for handling concurrency
          */
-        'resolver' => LaravelCacheResolver::class,
+        'resolver' => LaravelSequenceResolver::class,
 
         /**
          * The LaravelCacheResolver uses Laravel caching to ensure concurrency.
