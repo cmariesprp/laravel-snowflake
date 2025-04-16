@@ -1,5 +1,5 @@
 {
-    "name": "bradietilley/laravel-snowflake",
+    "name": "cmariesprp/laravel-snowflake",
     "description": "Laravel implementation for Snowflake IDs",
     "type": "library",
     "license": "MIT",
